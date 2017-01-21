@@ -13,13 +13,20 @@
 void organiza(int n, int v[MAX]);
 
 int main (){
-	int n, i;
+	int n, i, j, k, num;
 	int vetor[MAX];
 
 	scanf("%d", &n);
+	k = 0, j = n-1;
+ 	for(i = 0; i < n; i++){
+ 		scanf("%d", &num);
+			if(num % 2 == 0){
+				vetor[k++] = num;
+			}
+			else
+				vetor[j--] = num;
 
- 	for(i = 0; i < n; i++)
-			scanf("%d", &vetor[i]);
+	}
 
 	organiza(n, vetor);
 }
@@ -27,34 +34,27 @@ int main (){
 
 void organiza(int n, int v[MAX]){
 	int i, j, aux;
-	int vAux[MAX];
 
 	//faz a ordenação
+	
 	for(i = n-1; i > 0; i--)
 		for(j=0; j < i; j++){
-			if(v[j] > v[j+1]){
-				if(v[j+1] %2 == 0){
-					vAux[j] =
+			//se for par, organiza na forma crescente
+			if(v[j] % 2 == 0 && v[j+1] % 2 == 0)
+				if(v[j] > v[j+1]){
+					aux = v[j];
+					v[j] = v[j+1];
+					v[j+1] = aux;		
 				}
-			}
+			if(v[j] % 2 != 0 && v[j+1] % 2 != 0)
+				if(v[j] < v[j+1]){
+					aux = v[j];
+					v[j] = v[j+1];
+					v[j+1] = aux;		
+				}
+			
 		}
-/*
-	//divide em par e impar
-	//par crescente
-	//j marca o inicio
-	//aux marca o fim
-	i = 0, j = 0, aux = n;
-	while(i < n){
-		if(v[i] % 2 == 0){
-			vAux[j] = v[i];
-			j++;
-		}
-		else{
-			aux--;
-			vAux[aux] = v[i];
-		}
-		i++;
-	}*/
+
 	//imprime lista
 	for(i = 0; i < n;i++)
 			printf("%d\n", v[i] );
