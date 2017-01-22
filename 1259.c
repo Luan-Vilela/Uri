@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 
-#define MAX 1000
+#define MAX 100000
 
 void organiza(int n, int v[MAX]);
 
@@ -22,50 +22,41 @@ int main (){
 			scanf("%d", &vetor[i]);
 
 	organiza(n, vetor);
-
-
 }
 
 
 void organiza(int n, int v[MAX]){
 	int i, j, aux;
-	int vPar[MAX];
-	int vImpar[MAX];
+	int vAux[MAX];
 
 	//faz a ordenação
 	for(i = n-1; i > 0; i--)
-		for(j=0; j < i; j++)
+		for(j=0; j < i; j++){
 			if(v[j] > v[j+1]){
-				aux = v[j];
-				v[j] = v[j+1];
-				v[j+1] = aux;
+				if(v[j+1] %2 == 0){
+					vAux[j] =
+				}
 			}
-
+		}
+/*
 	//divide em par e impar
 	//par crescente
 	//j marca o inicio
-	i = 0, j = 0;
+	//aux marca o fim
+	i = 0, j = 0, aux = n;
 	while(i < n){
 		if(v[i] % 2 == 0){
-			vPar[j] = v[i];
+			vAux[j] = v[i];
 			j++;
 		}
-		i++;
-	}
-	//divide em par e impar
-	//impar descrente
-	//j marca o fim
-	i = 0, j = n;
-	while(i < n){
-		if(v[i] % 2 != 0){
-			j--;
-			vPar[j] = v[i];
+		else{
+			aux--;
+			vAux[aux] = v[i];
 		}
 		i++;
-	}
-
+	}*/
 	//imprime lista
 	for(i = 0; i < n;i++)
-			printf("%d\n", vPar[i] + vImpar[i]);
+			printf("%d\n", v[i] );
 
 }
